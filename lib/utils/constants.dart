@@ -6,6 +6,18 @@ const colorGrey = Color.fromRGBO(141, 141, 141, 1.0);
 const colorWhite = Colors.white;
 const colorDarkBlue = Color.fromRGBO(20, 25, 45, 1.0);
 
+const double kBoxSize = 32;
+const double kIconSize = 20;
+
+final kButtonStyle = ElevatedButton.styleFrom(
+  primary: colorDarkBlue,
+  elevation: 12,
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(50),
+  ),
+  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+);
+
 const TextTheme textThemeDefault = TextTheme(
   headline1:
       TextStyle(color: colorBlack, fontWeight: FontWeight.w700, fontSize: 26),
