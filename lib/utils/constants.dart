@@ -6,14 +6,14 @@ const colorGrey = Color.fromRGBO(141, 141, 141, 1.0);
 const colorWhite = Colors.white;
 const colorDarkBlue = Color.fromRGBO(20, 25, 45, 1.0);
 
-const double kBoxSize = 32;
-const double kIconSize = 20;
+const double kBoxSize = 45;
+const double kIconSize = 27;
 
 final kButtonStyle = ElevatedButton.styleFrom(
   primary: colorDarkBlue,
   elevation: 12,
   shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(50),
+    borderRadius: BorderRadius.circular(30),
   ),
   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
 );
@@ -56,29 +56,38 @@ const TextTheme textThemeDefault = TextTheme(
 );
 
 const TextTheme textThemeSmall = TextTheme(
-    headline1:
-        TextStyle(color: colorBlack, fontWeight: FontWeight.w700, fontSize: 22),
-    headline2:
-        TextStyle(color: colorBlack, fontWeight: FontWeight.w700, fontSize: 20),
-    headline3:
-        TextStyle(color: colorBlack, fontWeight: FontWeight.w700, fontSize: 18),
-    headline4:
-        TextStyle(color: colorBlack, fontWeight: FontWeight.w700, fontSize: 14),
-    headline5:
-        TextStyle(color: colorBlack, fontWeight: FontWeight.w700, fontSize: 12),
-    headline6:
-        TextStyle(color: colorBlack, fontWeight: FontWeight.w700, fontSize: 10),
-    bodyText1: TextStyle(
-        color: colorBlack,
-        fontSize: 12,
-        fontWeight: FontWeight.w500,
-        height: 1.5),
-    bodyText2: TextStyle(
-        color: colorGrey,
-        fontSize: 12,
-        fontWeight: FontWeight.w500,
-        height: 1.5),
-    subtitle1:
-        TextStyle(color: colorBlack, fontSize: 10, fontWeight: FontWeight.w400),
-    subtitle2:
-        TextStyle(color: colorGrey, fontSize: 10, fontWeight: FontWeight.w400));
+  headline1:
+      TextStyle(color: colorBlack, fontWeight: FontWeight.w700, fontSize: 22),
+  headline2:
+      TextStyle(color: colorBlack, fontWeight: FontWeight.w700, fontSize: 20),
+  headline3:
+      TextStyle(color: colorBlack, fontWeight: FontWeight.w700, fontSize: 18),
+  headline4:
+      TextStyle(color: colorBlack, fontWeight: FontWeight.w700, fontSize: 14),
+  headline5:
+      TextStyle(color: colorBlack, fontWeight: FontWeight.w700, fontSize: 12),
+  headline6:
+      TextStyle(color: colorBlack, fontWeight: FontWeight.w700, fontSize: 10),
+  bodyText1: TextStyle(
+    color: colorBlack,
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    height: 1.5,
+  ),
+  bodyText2: TextStyle(
+    color: colorGrey,
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    height: 1.5,
+  ),
+  subtitle1: TextStyle(
+    color: colorBlack,
+    fontSize: 10,
+    fontWeight: FontWeight.w400,
+  ),
+  subtitle2: TextStyle(
+    color: colorGrey,
+    fontSize: 10,
+    fontWeight: FontWeight.w400,
+  ),
+);
