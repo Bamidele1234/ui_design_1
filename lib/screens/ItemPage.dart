@@ -17,16 +17,26 @@ class ItemPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            //pinned: true, Stays at the top and let the contents scroll beneath it
-            //floating: true, Scrolls away as the user scrolls, but comes back when the user scrolls back up
-            //snap: true, Scrolls away, but sharply returns back when the user scrolls up
-            backgroundColor: colorGrey.withAlpha(25),
-          ),
-          // HouseInformationList(itemData: itemData)
-        ],
+      body: SafeArea(
+        child: NestedScrollView(
+          headerSliverBuilder: (
+            BuildContext context,
+            bool innerBoxIsScrolled,
+          ) =>
+              [
+            SliverAppBar(
+              floating: true,
+              expandedHeight: 240,
+              flexibleSpace: FlexibleSpaceBar(
+                title: const Text('Title'),
+                background: Image.asset(itemData['image']),
+              ),
+              backgroundColor: Colors.transparent,
+            )
+          ],
+          body: HouseInformationList(itemData: itemData),
+          //body:
+        ),
       ),
     );
   }
