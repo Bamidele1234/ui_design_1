@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:ui_design_1/app_router/router.gr.dart';
 
 import '../utils/constants.dart';
 import '../utils/custom_functions.dart';
@@ -21,25 +23,30 @@ class RealEstateItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Stack(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.asset(itemData['image']),
-              ),
-              const Positioned(
-                top: 10,
-                right: 10,
-                child: BorderBox(
-                  height: kBoxSize,
-                  width: kBoxSize,
-                  child: Icon(
-                    Icons.favorite_border_outlined,
-                    size: kIconSize,
-                  ),
+          GestureDetector(
+            onTap: () => context.router.push(
+              ItemPageRoute(itemData: itemData),
+            ),
+            child: Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset(itemData['image']),
                 ),
-              )
-            ],
+                const Positioned(
+                  top: 10,
+                  right: 10,
+                  child: BorderBox(
+                    height: kBoxSize,
+                    width: kBoxSize,
+                    child: Icon(
+                      Icons.favorite_border_outlined,
+                      size: kIconSize,
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
           addVerticalSpace(15),
           Row(

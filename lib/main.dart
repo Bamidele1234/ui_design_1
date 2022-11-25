@@ -1,20 +1,37 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:ui_design_1/screens/LandingPage.dart';
+import 'package:responsive_framework/responsive_wrapper.dart';
 import 'package:ui_design_1/utils/constants.dart';
 
-void main() => runApp(const MyApp());
+import 'app_router/router.gr.dart';
+
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+
+  // Get an instance of the App Router
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = window.physicalSize.width;
-    return MaterialApp(
+    return MaterialApp.router(
+      builder: (context, child) => ResponsiveWrapper.builder(
+        child,
+        maxWidth: 1700,
+        minWidth: 350,
+        defaultScale: true,
+        breakpoints: [
+          // Define the breakpoints
+          const ResponsiveBreakpoint.resize(350, name: MOBILE),
+          const ResponsiveBreakpoint.autoScale(600, name: TABLET),
+          const ResponsiveBreakpoint.resize(800, name: DESKTOP),
+          const ResponsiveBreakpoint.autoScale(1700, name: 'XL'),
+        ],
+      ),
       debugShowCheckedModeBanner: false,
-      title: 'Design 1',
       theme: ThemeData(
         primaryColor: colorWhite,
         textTheme: screenWidth < 500 ? textThemeSmall : textThemeDefault,
@@ -23,7 +40,8 @@ class MyApp extends StatelessWidget {
           secondary: colorDarkBlue,
         ),
       ),
-      home: const LandingPage(),
+      routerDelegate: _appRouter.delegate(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
     );
   }
 }
