@@ -5,9 +5,10 @@ const colorGrey = Color.fromRGBO(141, 141, 141, 1.0);
 
 const colorWhite = Colors.white;
 const colorDarkBlue = Color.fromRGBO(20, 25, 45, 1.0);
+const colorIcon = Color.fromRGBO(20, 25, 45, 0.75);
 
 const double kBoxSize = 45;
-const double kIconSize = 27;
+const double kIconSize = 28;
 
 /// Value = 18
 const double kSpacing = 20;

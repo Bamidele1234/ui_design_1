@@ -3,6 +3,7 @@ import 'package:ui_design_1/custom/house_info.dart';
 import 'package:ui_design_1/utils/widget_functions.dart';
 
 import '../custom/border_box.dart';
+import '../custom/my_icon_button.dart';
 import '../custom/option_button.dart';
 import '../utils/constants.dart';
 import '../utils/custom_functions.dart';
@@ -31,15 +32,27 @@ class ItemPage extends StatelessWidget {
               ) =>
                   [
                 SliverAppBar(
+                  iconTheme: const IconThemeData(
+                    color: colorIcon,
+                    size: kIconSize,
+                  ),
                   floating: true,
-                  expandedHeight: 220,
+                  expandedHeight: 235,
                   flexibleSpace: FlexibleSpaceBar(
-                    //title: const Text('Title'),
                     background: Hero(
                       tag: itemData['image'],
-                      child: Image.asset(
-                        itemData['image'],
-                        fit: BoxFit.fitWidth,
+                      child: Stack(
+                        children: [
+                          Image.asset(
+                            itemData['image'],
+                            width: double.infinity,
+                            fit: BoxFit.fitWidth,
+                          ),
+                          MyIconButton(
+                            icon: Icons.favorite_border_outlined,
+                            action: () {},
+                          )
+                        ],
                       ),
                     ),
                   ),
@@ -92,7 +105,7 @@ class HouseInformationList extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: kSpacing,
-              vertical: kSpacing,
+              vertical: kSpacing + 5,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

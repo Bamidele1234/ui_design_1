@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ui_design_1/custom/border_box.dart';
 import 'package:ui_design_1/custom/option_button.dart';
 import 'package:ui_design_1/utils/constants.dart';
 import 'package:ui_design_1/utils/sample_data.dart';
@@ -23,28 +22,27 @@ class LandingPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(kSpacing),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: kSpacing - 10,
+                    vertical: 10,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      BorderBox(
-                        width: kBoxSize,
-                        height: kBoxSize,
-                        child: Icon(
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
                           Icons.menu_rounded,
-                          color: colorBlack,
                           size: kIconSize,
                         ),
                       ),
-                      BorderBox(
-                        width: kBoxSize,
-                        height: kBoxSize,
-                        child: Icon(
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
                           Icons.settings_outlined,
-                          color: colorBlack,
                           size: kIconSize,
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),

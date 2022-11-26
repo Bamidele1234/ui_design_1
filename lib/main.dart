@@ -39,6 +39,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSwatch().copyWith(
           secondary: colorDarkBlue,
         ),
+        iconTheme: const IconThemeData(
+          color: colorIcon,
+        ),
       ),
       routerDelegate: _appRouter.delegate(),
       routeInformationParser: _appRouter.defaultRouteParser(),
