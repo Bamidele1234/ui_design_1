@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:like_button/like_button.dart';
 
 import '../utils/constants.dart';
 
@@ -14,16 +15,18 @@ class MyIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: 5,
-      right: 5,
+      top: 12,
+      right: 12,
       child: Material(
         color: Colors.transparent,
-        child: IconButton(
-          onPressed: action,
-          icon: Icon(
-            icon,
-            size: kIconSize,
-          ),
+        child: LikeButton(
+          likeBuilder: (bool isLiked) {
+            return Icon(
+              isLiked ? Icons.favorite : icon,
+              color: isLiked ? Colors.redAccent : colorIcon,
+              size: kIconSize,
+            );
+          },
         ),
       ),
     );

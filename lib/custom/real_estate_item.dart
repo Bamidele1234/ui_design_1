@@ -6,7 +6,7 @@ import 'package:ui_design_1/custom/my_icon_button.dart';
 import '../utils/custom_functions.dart';
 import '../utils/widget_functions.dart';
 
-class RealEstateItem extends StatelessWidget {
+class RealEstateItem extends StatefulWidget {
   const RealEstateItem({
     Key? key,
     this.itemData,
@@ -14,6 +14,11 @@ class RealEstateItem extends StatelessWidget {
 
   final dynamic itemData;
 
+  @override
+  State<RealEstateItem> createState() => _RealEstateItemState();
+}
+
+class _RealEstateItemState extends State<RealEstateItem> {
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
@@ -24,15 +29,18 @@ class RealEstateItem extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () => context.router.push(
-              ItemPageRoute(itemData: itemData),
+              ItemPageRoute(itemData: widget.itemData),
             ),
             child: Hero(
-              tag: itemData['image'],
+              tag: widget.itemData['image'],
               child: Stack(
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Image.asset(itemData['image']),
+                  GestureDetector(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.asset(widget.itemData['image']),
+                    ),
+                    onDoubleTap: () {},
                   ),
                   MyIconButton(
                     icon: Icons.favorite_border_outlined,
@@ -46,19 +54,19 @@ class RealEstateItem extends StatelessWidget {
           Row(
             children: [
               Text(
-                formatCurrency(itemData['amount']),
+                formatCurrency(widget.itemData['amount']),
                 style: themeData.textTheme.headline1,
               ),
               addHorizontalSpace(10),
               Text(
-                "${itemData['address']}",
+                "${widget.itemData['address']}",
                 style: themeData.textTheme.bodyText2,
               ),
             ],
           ),
           addVerticalSpace(10),
           Text(
-            "${itemData['bedrooms']} bedrooms / ${itemData['bathrooms']} bathrooms / ${itemData['area']} sqft",
+            "${widget.itemData['bedrooms']} bedrooms / ${widget.itemData['bathrooms']} bathrooms / ${widget.itemData['area']} sqft",
             style: themeData.textTheme.headline5,
           ),
         ],

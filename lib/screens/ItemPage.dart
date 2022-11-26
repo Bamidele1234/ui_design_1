@@ -36,17 +36,19 @@ class ItemPage extends StatelessWidget {
                     color: colorIcon,
                     size: kIconSize,
                   ),
-                  floating: true,
-                  expandedHeight: 235,
+                  expandedHeight: 230,
                   flexibleSpace: FlexibleSpaceBar(
                     background: Hero(
                       tag: itemData['image'],
                       child: Stack(
                         children: [
-                          Image.asset(
-                            itemData['image'],
-                            width: double.infinity,
-                            fit: BoxFit.fitWidth,
+                          GestureDetector(
+                            child: Image.asset(
+                              itemData['image'],
+                              width: double.infinity,
+                              fit: BoxFit.fitWidth,
+                            ),
+                            onDoubleTap: () {},
                           ),
                           MyIconButton(
                             icon: Icons.favorite_border_outlined,
@@ -56,7 +58,7 @@ class ItemPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  backgroundColor: Colors.transparent,
+                  backgroundColor: colorWhite,
                 ),
               ],
               body: HouseInformationList(itemData: itemData),
