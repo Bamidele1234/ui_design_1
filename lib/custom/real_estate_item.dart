@@ -31,7 +31,10 @@ class RealEstateItem extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(20),
-                  child: Image.asset(itemData['image']),
+                  child: Hero(
+                    tag: itemData['image'],
+                    child: Image.asset(itemData['image']),
+                  ),
                 ),
                 const Positioned(
                   top: 10,

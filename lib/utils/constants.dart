@@ -9,11 +9,14 @@ const colorDarkBlue = Color.fromRGBO(20, 25, 45, 1.0);
 const double kBoxSize = 45;
 const double kIconSize = 27;
 
+/// Value = 18
+const double kSpacing = 20;
+
 final kButtonStyle = ElevatedButton.styleFrom(
   primary: colorDarkBlue,
   elevation: 12,
   shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(30),
+    borderRadius: BorderRadius.circular(28),
   ),
   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
 );

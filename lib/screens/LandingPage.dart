@@ -14,7 +14,6 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
-    const double spacing = 15;
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -24,7 +23,7 @@ class LandingPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(spacing),
+                  padding: const EdgeInsets.all(kSpacing),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
@@ -50,7 +49,7 @@ class LandingPage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: spacing),
+                  padding: const EdgeInsets.only(left: kSpacing),
                   child: Text(
                     'City',
                     style: themeData.textTheme.bodyText2,
@@ -58,7 +57,7 @@ class LandingPage extends StatelessWidget {
                 ),
                 addVerticalSpace(10),
                 Padding(
-                  padding: const EdgeInsets.only(left: spacing),
+                  padding: const EdgeInsets.only(left: kSpacing),
                   child: Text(
                     'San Francisco',
                     style: themeData.textTheme.headline1,
@@ -66,33 +65,30 @@ class LandingPage extends StatelessWidget {
                 ),
                 addVerticalSpace(10),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: spacing),
+                  padding: const EdgeInsets.symmetric(horizontal: kSpacing),
                   child: Divider(
                     thickness: 2,
-                    height: spacing,
+                    height: kSpacing,
                     color: colorGrey.withAlpha(80),
                   ),
                 ),
                 addVerticalSpace(10),
-                Padding(
-                  padding: const EdgeInsets.only(left: spacing),
-                  child: SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        "<\$220,000",
-                        "For Sale",
-                        "3-4 Beds",
-                        ">1000 sqft"
-                      ].map((filter) => ChoiceOption(text: filter)).toList(),
-                    ),
+                SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      "<\$220,000",
+                      "For Sale",
+                      "3-4 Beds",
+                      ">1000 sqft"
+                    ].map((filter) => ChoiceOption(text: filter)).toList(),
                   ),
                 ),
                 addVerticalSpace(10),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: spacing),
+                    padding: const EdgeInsets.symmetric(horizontal: kSpacing),
                     child: ScrollConfiguration(
                       behavior: ScrollConfiguration.of(context).copyWith(
                         scrollbars: false,

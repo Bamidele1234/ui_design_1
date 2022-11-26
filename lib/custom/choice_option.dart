@@ -14,7 +14,7 @@ class ChoiceOption extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4),
+      padding: const EdgeInsets.only(left: 13),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),

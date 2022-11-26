@@ -10,7 +10,7 @@ import '../screens/LandingPage.dart';
       path: ItemPage.tag,
       page: ItemPage,
       transitionsBuilder: TransitionsBuilders.fadeIn,
-      durationInMilliseconds: 150,
+      durationInMilliseconds: 300,
     ),
   ],
 )

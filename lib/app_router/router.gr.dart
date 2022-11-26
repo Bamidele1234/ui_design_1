@@ -37,7 +37,7 @@ class AppRouter extends _i3.RootStackRouter {
           itemData: args.itemData,
         ),
         transitionsBuilder: _i3.TransitionsBuilders.fadeIn,
-        durationInMilliseconds: 150,
+        durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
       );

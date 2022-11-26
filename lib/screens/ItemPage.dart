@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:ui_design_1/custom/house_info.dart';
+import 'package:ui_design_1/utils/widget_functions.dart';
 
+import '../custom/border_box.dart';
+import '../custom/option_button.dart';
 import '../utils/constants.dart';
 import '../utils/custom_functions.dart';
-import '../utils/widget_functions.dart';
 
 class ItemPage extends StatelessWidget {
   const ItemPage({
@@ -18,24 +21,53 @@ class ItemPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: NestedScrollView(
-          headerSliverBuilder: (
-            BuildContext context,
-            bool innerBoxIsScrolled,
-          ) =>
-              [
-            SliverAppBar(
-              floating: true,
-              expandedHeight: 240,
-              flexibleSpace: FlexibleSpaceBar(
-                title: const Text('Title'),
-                background: Image.asset(itemData['image']),
+        child: Stack(
+          alignment: AlignmentDirectional.center,
+          children: [
+            NestedScrollView(
+              headerSliverBuilder: (
+                BuildContext context,
+                bool innerBoxIsScrolled,
+              ) =>
+                  [
+                SliverAppBar(
+                  floating: true,
+                  expandedHeight: 220,
+                  flexibleSpace: FlexibleSpaceBar(
+                    //title: const Text('Title'),
+                    background: Hero(
+                      tag: itemData['image'],
+                      child: Image.asset(
+                        itemData['image'],
+                        fit: BoxFit.fitWidth,
+                      ),
+                    ),
+                  ),
+                  backgroundColor: Colors.transparent,
+                ),
+              ],
+              body: HouseInformationList(itemData: itemData),
+              //body:
+            ),
+            Positioned(
+              bottom: 15,
+              child: Row(
+                children: [
+                  const OptionButton(
+                    text: 'Message',
+                    icon: Icons.message,
+                    width: 10,
+                  ),
+                  addHorizontalSpace(15),
+                  const OptionButton(
+                    text: 'Call',
+                    icon: Icons.call,
+                    width: 10,
+                  ),
+                ],
               ),
-              backgroundColor: Colors.transparent,
             )
           ],
-          body: HouseInformationList(itemData: itemData),
-          //body:
         ),
       ),
     );
@@ -55,24 +87,80 @@ class HouseInformationList extends StatelessWidget {
     ThemeData themeData = Theme.of(context);
     return SingleChildScrollView(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  Text(
-                    formatCurrency(itemData['amount']),
-                    style: themeData.textTheme.headline1,
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: kSpacing,
+              vertical: kSpacing,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      formatCurrency(itemData['amount']),
+                      style: themeData.textTheme.headline1,
+                    ),
+                    //addVerticalSpace(5),
+                    Text(
+                      "${itemData['address']}",
+                      style: themeData.textTheme.bodyText2,
+                    ),
+                  ],
+                ),
+                BorderBox(
+                  height: 50,
+                  width: 150,
+                  child: Text(
+                    '20 Hours ago',
+                    style: themeData.textTheme.headline5,
                   ),
-                  addVerticalSpace(10),
-                  Text(
-                    "${itemData['address']}",
-                    style: themeData.textTheme.bodyText2,
-                  ),
-                ],
-              )
-            ],
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: kSpacing,
+              right: kSpacing,
+              bottom: kSpacing,
+            ),
+            child: Text(
+              'House Information',
+              style: themeData.textTheme.headline5,
+            ),
+          ),
+          SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                itemData['area'].toString(),
+                itemData['bedrooms'].toString(),
+                itemData['bathrooms'].toString(),
+                itemData['garage'].toString(),
+              ]
+                  .map((filter) => HouseInfo(
+                        value: filter,
+                        object: 'area',
+                      ))
+                  .toList(),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(
+              kSpacing,
+              kSpacing,
+              kSpacing,
+              2,
+            ),
+            child: Text(
+              itemData['description'],
+              style: themeData.textTheme.bodyText2,
+            ),
           )
         ],
       ),
