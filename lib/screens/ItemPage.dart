@@ -36,7 +36,7 @@ class ItemPage extends StatelessWidget {
                     color: colorIcon,
                     size: kIconSize,
                   ),
-                  expandedHeight: 230,
+                  expandedHeight: 250,
                   flexibleSpace: FlexibleSpaceBar(
                     background: Hero(
                       tag: itemData['image'],

@@ -7,6 +7,19 @@ import 'package:ui_design_1/utils/widget_functions.dart';
 import '../custom/choice_option.dart';
 import '../custom/real_estate_item.dart';
 
+extension ContextExtension on BuildContext {
+  int axisCount() {
+    double width = MediaQuery.of(this).size.width;
+    if (width > 610 && width < 1200) {
+      return 2;
+    } else if (width >= 1200) {
+      return 3;
+    } else {
+      return 1;
+    }
+  }
+}
+
 class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);
 
@@ -86,13 +99,18 @@ class LandingPage extends StatelessWidget {
                 addVerticalSpace(10),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: kSpacing),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: kSpacing - 5),
                     child: ScrollConfiguration(
                       behavior: ScrollConfiguration.of(context).copyWith(
                         scrollbars: false,
                         physics: const BouncingScrollPhysics(),
                       ),
-                      child: ListView.builder(
+                      child: GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: context.axisCount(),
+                          crossAxisSpacing: 12,
+                        ),
                         itemCount: reData.length,
                         itemBuilder: (context, index) {
                           return RealEstateItem(

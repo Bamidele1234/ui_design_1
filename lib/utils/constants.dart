@@ -8,7 +8,7 @@ const colorDarkBlue = Color.fromRGBO(20, 25, 45, 1.0);
 const colorIcon = Color.fromRGBO(20, 25, 45, 0.75);
 
 const double kBoxSize = 45;
-const double kIconSize = 30;
+const double kIconSize = 25;
 
 /// Value = 18
 const double kSpacing = 20;

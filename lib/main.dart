@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 import 'package:ui_design_1/utils/constants.dart';
+import 'package:flutter/services.dart';
 
 import 'app_router/router.gr.dart';
 
@@ -17,18 +18,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = window.physicalSize.width;
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MaterialApp.router(
       builder: (context, child) => ResponsiveWrapper.builder(
         child,
         maxWidth: 1700,
-        minWidth: 350,
+        minWidth: 300,
         defaultScale: true,
         breakpoints: [
           // Define the breakpoints
-          const ResponsiveBreakpoint.resize(350, name: MOBILE),
-          const ResponsiveBreakpoint.autoScale(600, name: TABLET),
-          const ResponsiveBreakpoint.resize(800, name: DESKTOP),
-          const ResponsiveBreakpoint.autoScale(1700, name: 'XL'),
+          const ResponsiveBreakpoint.resize(600, name: MOBILE),
+          const ResponsiveBreakpoint.autoScale(800, name: TABLET),
+          const ResponsiveBreakpoint.autoScale(1200, name: DESKTOP)
         ],
       ),
       debugShowCheckedModeBanner: false,

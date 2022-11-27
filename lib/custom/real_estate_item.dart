@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:ui_design_1/app_router/router.gr.dart';
 import 'package:ui_design_1/custom/my_icon_button.dart';
 
-import '../utils/custom_functions.dart';
 import '../utils/widget_functions.dart';
 
 class RealEstateItem extends StatefulWidget {
@@ -22,55 +21,50 @@ class _RealEstateItemState extends State<RealEstateItem> {
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 15),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          GestureDetector(
-            onTap: () => context.router.push(
-              ItemPageRoute(itemData: widget.itemData),
-            ),
-            child: Hero(
-              tag: widget.itemData['image'],
-              child: Stack(
-                children: [
-                  GestureDetector(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.asset(widget.itemData['image']),
-                    ),
-                    onDoubleTap: () {},
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        GestureDetector(
+          onTap: () => context.router.push(
+            ItemPageRoute(itemData: widget.itemData),
+          ),
+          child: Hero(
+            tag: widget.itemData['image'],
+            child: Stack(
+              children: [
+                GestureDetector(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Image.asset(widget.itemData['image']),
                   ),
-                  MyIconButton(
-                    icon: Icons.favorite_border_outlined,
-                    action: () {},
-                  ),
-                ],
-              ),
+                  onDoubleTap: () {},
+                ),
+                MyIconButton(
+                  icon: Icons.favorite_border_outlined,
+                  action: () {},
+                ),
+              ],
             ),
           ),
-          addVerticalSpace(15),
-          Row(
-            children: [
-              Text(
-                formatCurrency(widget.itemData['amount']),
-                style: themeData.textTheme.headline1,
-              ),
-              addHorizontalSpace(10),
-              Text(
-                "${widget.itemData['address']}",
-                style: themeData.textTheme.bodyText2,
-              ),
-            ],
-          ),
-          addVerticalSpace(10),
-          Text(
-            "${widget.itemData['bedrooms']} bedrooms / ${widget.itemData['bathrooms']} bathrooms / ${widget.itemData['area']} sqft",
-            style: themeData.textTheme.headline5,
-          ),
-        ],
-      ),
+        ),
+        addVerticalSpace(15),
+        Row(
+          children: [
+            Text(
+              MediaQuery.of(context).size.toString(),
+              //formatCurrency(widget.itemData['amount']),
+              style: themeData.textTheme.headline1,
+            ),
+            addHorizontalSpace(10),
+          ],
+        ),
+        addVerticalSpace(10),
+        Text(
+          "${widget.itemData['bedrooms']} bedrooms / ${widget.itemData['bathrooms']} bathrooms / ${widget.itemData['area']} sqft",
+          style: themeData.textTheme.headline5,
+        ),
+      ],
     );
   }
 }
