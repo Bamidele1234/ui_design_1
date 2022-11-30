@@ -17,7 +17,7 @@ class HouseInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
     return Padding(
-      padding: const EdgeInsets.only(left: kSpacing + 4),
+      padding: const EdgeInsets.only(left: kSpacing + 3),
       child: Column(
         children: [
           Container(
@@ -29,15 +29,12 @@ class HouseInfo extends StatelessWidget {
                 width: 2,
               ),
             ),
-            width: 80,
-            height: 80,
+            width: 65,
+            height: 55,
             child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  value,
-                  style: themeData.textTheme.headline3,
-                ),
+              child: Text(
+                value,
+                style: themeData.textTheme.headline3,
               ),
             ),
           ),

@@ -13,6 +13,17 @@ const double kIconSize = 25;
 /// Value = 18
 const double kSpacing = 20;
 
+const kFadeDecoration = BoxDecoration(
+  gradient: LinearGradient(
+    begin: Alignment.center,
+    end: Alignment.bottomCenter,
+    colors: <Color>[
+      Colors.transparent,
+      colorWhite,
+    ],
+  ),
+);
+
 final kButtonStyle = ElevatedButton.styleFrom(
   primary: colorDarkBlue,
   elevation: 12,

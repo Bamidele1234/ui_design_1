@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ui_design_1/app_router/router.gr.dart';
 import 'package:ui_design_1/custom/my_icon_button.dart';
 
+import '../utils/custom_functions.dart';
 import '../utils/widget_functions.dart';
 
 class RealEstateItem extends StatefulWidget {
@@ -23,7 +24,6 @@ class _RealEstateItemState extends State<RealEstateItem> {
     ThemeData themeData = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
       children: [
         GestureDetector(
           onTap: () => context.router.push(
@@ -52,16 +52,21 @@ class _RealEstateItemState extends State<RealEstateItem> {
         Row(
           children: [
             Text(
-              MediaQuery.of(context).size.toString(),
-              //formatCurrency(widget.itemData['amount']),
+              formatCurrency(widget.itemData['amount']),
               style: themeData.textTheme.headline1,
             ),
             addHorizontalSpace(10),
+            Text(
+              "${widget.itemData['address']}",
+              style: themeData.textTheme.bodyText2,
+            ),
           ],
         ),
         addVerticalSpace(10),
         Text(
-          "${widget.itemData['bedrooms']} bedrooms / ${widget.itemData['bathrooms']} bathrooms / ${widget.itemData['area']} sqft",
+          "${widget.itemData['bedrooms']} bedrooms / "
+          "${widget.itemData['bathrooms']} bathrooms / "
+          "${widget.itemData['area']} sqft",
           style: themeData.textTheme.headline5,
         ),
       ],

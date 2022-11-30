@@ -32,29 +32,38 @@ class ItemPage extends StatelessWidget {
               ) =>
                   [
                 SliverAppBar(
+                  //pinned: true,
                   iconTheme: const IconThemeData(
                     color: colorIcon,
                     size: kIconSize,
                   ),
-                  expandedHeight: 250,
+                  expandedHeight: 160,
                   flexibleSpace: FlexibleSpaceBar(
-                    background: Hero(
-                      tag: itemData['image'],
-                      child: Stack(
-                        children: [
-                          GestureDetector(
-                            child: Image.asset(
-                              itemData['image'],
-                              width: double.infinity,
-                              fit: BoxFit.fitWidth,
+                    titlePadding: const EdgeInsets.only(
+                      left: 40,
+                      bottom: 10,
+                    ),
+                    background: DecoratedBox(
+                      position: DecorationPosition.foreground,
+                      decoration: kFadeDecoration,
+                      child: Hero(
+                        tag: itemData['image'],
+                        child: Stack(
+                          children: [
+                            GestureDetector(
+                              child: Image.asset(
+                                itemData['image'],
+                                width: double.infinity,
+                                fit: BoxFit.cover,
+                              ),
+                              onDoubleTap: () {},
                             ),
-                            onDoubleTap: () {},
-                          ),
-                          MyIconButton(
-                            icon: Icons.favorite_border_outlined,
-                            action: () {},
-                          )
-                        ],
+                            MyIconButton(
+                              icon: Icons.favorite_border_outlined,
+                              action: () {},
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -107,7 +116,7 @@ class HouseInformationList extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: kSpacing,
-              vertical: kSpacing + 5,
+              vertical: kSpacing,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -127,8 +136,8 @@ class HouseInformationList extends StatelessWidget {
                   ],
                 ),
                 BorderBox(
-                  height: 50,
-                  width: 150,
+                  height: 40,
+                  width: 110,
                   child: Text(
                     '20 Hours ago',
                     style: themeData.textTheme.headline5,
